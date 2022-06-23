@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    
+    <script>
+        $(()=>
+        {
+            console.log("Event Occur");
+
+            $('#bookid').blur(()=>{
+
+                console.log(" blur Event Occur");
+                let bookid = $('#bookid').val();
+
+                let ajaxparam = {
+                    data : {bookid :bookid},
+                    url : "http://localhost:8081/getItem",
+                    type : 'get',
+                    dataType : 'json',
+                    success : (output)=>{
+                        if(output.status == true){
+                            $('#msg').text("bookid is found");
+                            $('#bookname').val(output.bookdetail.bookname);
+                            $('#price').val(output.bookdetail.price);
+                        }
+                        else{
+                            $('#msg').text("bookid is not found");
+                            $('#bookname').val("");
+                            $('#price').val("");
+                        }
+                    },
+                    error : (error)=>{
+                        console.log("failue");
+                    }
+                }
+                $.ajax(ajaxparam);
+            });
+
+
+            $('#update').click(()=>{
+
+                console.log(" click Event Occur");
+
+                let input = { bookid : $('#bookid').val(),
+                            bookname : $('#bookname').val(),
+                            price : $('#price').val()};
+
+                            
+                 console.log(input);
+
+                let ajaxparams = {
+                    data : input,
+                    url : "http://localhost:8081/updateItem",
+                    type : 'get',
+                    dataType : 'json',
+                    success : (output)=>{
+                        if(output == true){
+                            $('#msg').text("Update Successful");
+                           
+                        }
+                        else{
+                            $('#msg').text("Update  UnSuccessful");
+                           
+                        }
+                        $('#bookid').val("");
+                        $('#bookname').val("");
+                        $('#price').val("");
+
+                    },
+                    error : (error)=>{
+                        console.log("failue");
+                    }
+                }
+                $.ajax(ajaxparams);
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+    <br>
+    Bookid   :  <input type="text" placeholder="Bookid" id="bookid"><span id="msg">What happened</span>
+     <br>
+    
+     <br>
+     Bookname :   <input type="text" placeholder="Bookname" id="bookname">
+     <br>
+    
+     <br>
+     Price    :  <input type="text" placeholder="Price" id="price">
+     <br>
+     <br>
+     <button id="update">Update Book</button>
+</body>
+</html>

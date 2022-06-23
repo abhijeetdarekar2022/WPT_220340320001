@@ -1,0 +1,133 @@
+node js syntax.
+
+const mysql = require('mysql2');
+
+JSON.stringify(result)
+
+//http://localhost:8081/poc2?xyz=3
+
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'test',
+	port:3306
+});
+
+var result ="";
+connection.query("select * from chair where leg = ?", [req.body.xyz.pqr], (err, res1) => {
+        if (err) {
+            result = err;
+			console.log("trouble " + err);
+        } else {
+            result = res1;
+			console.log("success" + result)
+        }
+		
+		console.log("38 " + );
+        res.send(result);
+    });
+	
+	
+    connection.query('update chair set leg = ? , leg2 = ? where leg3 = ?', [req.body.inp3, req.body.inp2, req.query.body.inp3], (err, res1) => {
+        if (err) {
+            result = err;
+			
+        } else {
+            result = {
+                concept: "so what",
+                rws: res1.affectedRows
+            };
+			
+        }
+			
+        res.send(result);
+    });
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	------------------------------------------------
+	
+	jquery syntaxes.
+	
+	keep datatype:text first and then convert into json think why..
+	
+	$.ajax({
+                    type: "post",
+                    dataType: "json",
+                    url: "http://localhost:8081/ssel",
+					data: {
+                        pqr: y
+                    },
+                    success: function (data) {
+							alert("success data");
+                        
+                    },
+                    error: function (e) {
+                        alert('we have trouble ' + JSON.stringify(e));
+                    }
+                });
+				
+				
+				
+				
+           
+
+	$("#btn1").click(function () { 
+
+		});
+		$("#in1").val();
+	$("#out").html(str);
+	
+	
+	$.ajax({
+                    type: "get",
+                    dataType: "json",
+                    url: "http://localhost:8081/mdel",
+                    data: { xyz: pqr },
+                    success: function (gfs) {
+sabled", true);
+                    },
+                    error: function (e) {
+                        alert('we have trouble ' + JSON.stringify(e));
+                    }
+                });
+		
+	<script src="jquery-3.5.1.min.js"></script>	
+		
+$(()=>
+{
+console.log("no more sins");
+$("#b2").click(function () 
+	{ 
+		console.log("jquery works");
+	});
+	
+	
+	$("#t2").blur(function () 
+	{ 
+		console.log("jquery works");
+	});
+	
+});
+
+
+	
+	
